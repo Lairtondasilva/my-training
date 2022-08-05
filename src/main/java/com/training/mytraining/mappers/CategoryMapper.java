@@ -2,9 +2,12 @@ package com.training.mytraining.mappers;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.training.mytraining.dtos.category.CategoryResponse;
 import com.training.mytraining.model.CategoryModel;
 
+@Component
 public class CategoryMapper {
   
   public CategoryResponse toCategoryResponse (CategoryModel categoryModel){

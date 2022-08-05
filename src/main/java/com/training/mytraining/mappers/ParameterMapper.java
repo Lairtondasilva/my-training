@@ -1,8 +1,11 @@
 package com.training.mytraining.mappers;
 
+import org.springframework.stereotype.Component;
+
 import com.training.mytraining.dtos.parameters.ParametersResponse;
 import com.training.mytraining.model.ParameterModel;
 
+@Component
 public class ParameterMapper {
 
   public ParametersResponse toParametersResponse(ParameterModel parameter){
