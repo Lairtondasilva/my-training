@@ -11,13 +11,15 @@ import com.training.mytraining.model.ExerciseModel;
 public interface ExerciseRepository extends JpaRepository<ExerciseModel, Long>{
   default List<ExerciseModel> findByIdOrElseThrow (List<Long> exerciseIds){
     List<ExerciseModel> exercises = new ArrayList<>();
-    exercises.add((ExerciseModel) exerciseIds.stream().map(id->{
-      if(findById(id).isPresent()){
-        return findById(id).get();
+    exerciseIds.forEach(id->{
+      if(findById(id).isEmpty()){
+        throw new ExerciseNotFoundException();
       }
-      throw new ExerciseNotFoundException();
+      else{
+        exercises.add(findById(id).get());
+      }
     }
-    ));
+    );
     return exercises;
   }
 }

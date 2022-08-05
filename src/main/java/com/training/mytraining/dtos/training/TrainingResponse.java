@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class TrainingResponse {
   
   private Long id;
+  private String name;
   private LocalDate startTraining;
   private LocalDate endTraining;
   private List<ExerciseResponse> exercises;
