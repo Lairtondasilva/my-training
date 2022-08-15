@@ -18,11 +18,11 @@ public class TrainingMapper {
     this.exerciseMapper = exerciseMapper;
   }
 
-  public TrainingModel toTrainingModel (TrainingRequest training){
-    return TrainingModel.builder().trainingName(training.getName())
-      .startDate(training.getStartDate())
-      .endDate(training.getEndDate())
-      .exercises(exerciseRepository.findByIdOrElseThrow(training.getExercisesId())).build();
+  public TrainingModel toModel (TrainingRequest request){
+    return TrainingModel.builder().trainingName(request.getName())
+      .startDate(request.getStartDate())
+      .endDate(request.getEndDate())
+      .exercises(exerciseRepository.findByIdOrElseThrow(request.getExercisesId())).build();
   }
 
   public TrainingResponse toTrainingResponse (TrainingModel training){

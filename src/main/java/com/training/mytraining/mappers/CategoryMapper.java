@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.training.mytraining.dtos.category.CategoryRequest;
 import com.training.mytraining.dtos.category.CategoryResponse;
 import com.training.mytraining.model.CategoryModel;
 
@@ -17,4 +18,9 @@ public class CategoryMapper {
   public List<CategoryResponse> toCategoryResponse (List<CategoryModel> categories){
     return categories.stream().map(category->toCategoryResponse(category)).toList();
   }
+
+  public CategoryModel toModel(CategoryRequest request){
+    return CategoryModel.builder().nameCategory(request.getName()).build();
+  }
+
 }

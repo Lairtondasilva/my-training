@@ -58,7 +58,7 @@ public class TestExerciseRepository {
         exerciseRepository.findByIdOrElseThrow(idsFalses);
             }, "Exercise not found"
     );
-    assertEquals(new JpaObjectRetrievalFailureException(new ExerciseNotFoundException()).getMessage(), thrown.getMessage());
+    assertEquals(new JpaObjectRetrievalFailureException(new ExerciseNotFoundException(5L)).getMessage(), thrown.getMessage());
     assertEquals(ids.get(0), exerciseRepository.findByIdOrElseThrow(ids).get(0).getId());
    
   }

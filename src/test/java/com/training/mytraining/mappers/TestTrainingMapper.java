@@ -1,16 +1,15 @@
 package com.training.mytraining.mappers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.persistence.MapKeyColumn;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -60,10 +59,12 @@ public class TestTrainingMapper {
   }
 
   @Test
-  public void TestToModelTrainingMapper () throws Exception{
+  public void testToModelTrainingMapper () throws Exception{
     Mockito.when(exerciseRepository.findByIdOrElseThrow(request.getExercisesId())).thenReturn(exercises);
-    var training2 = trainingMapper.toTrainingModel(request);
+    var training2 = trainingMapper.toModel(request);
+    verify(exerciseRepository).findByIdOrElseThrow(request.getExercisesId());
     assertEquals(training2.getClass(), TrainingModel.class);
     assertEquals(training2.getExercises(), mytraining.getExercises());
   }
+
 }

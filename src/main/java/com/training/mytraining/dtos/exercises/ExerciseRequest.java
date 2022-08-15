@@ -29,7 +29,7 @@ public class ExerciseRequest {
   private String ulrDemonstration;
   private String observations;
   @NotNull
-  private List<Long> categoryId;
+  private List<Long> categoriesId;
 
   private Long parameterId;
 }

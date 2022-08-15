@@ -15,12 +15,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table (name = "tb_exercises")
@@ -45,9 +47,9 @@ public class ExerciseModel {
   @JoinTable(name = "tb_exercises_categories", joinColumns = 
   @JoinColumn(name="exercise_id", referencedColumnName = "id"),
   inverseJoinColumns = @JoinColumn(name="categoria_id", referencedColumnName = "id"))
-  private List<CategoryModel> categorias;
+  private List<CategoryModel> categories;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "parameter_id", referencedColumnName = "id")
-  private ParameterModel ParameterModel;
+  private ParameterModel parameterModel;
 }

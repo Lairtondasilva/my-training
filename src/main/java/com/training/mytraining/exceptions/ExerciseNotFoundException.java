@@ -4,8 +4,8 @@ import javax.persistence.EntityNotFoundException;
 
 public class ExerciseNotFoundException extends EntityNotFoundException{
 
-  public ExerciseNotFoundException() {
-    super("Exercise not found!");
+  public ExerciseNotFoundException(Long id) {
+    super("Exercise with id ["+id+"] not found!");
   }
 
   public ExerciseNotFoundException(String message) {
